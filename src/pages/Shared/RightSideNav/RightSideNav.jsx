@@ -1,12 +1,25 @@
 import { Button } from '@/components/ui/button'
-import React from 'react'
+import { AuthContext } from '@/contexts/AuthProvider/AuthProvider'
+import { GoogleAuthProvider } from 'firebase/auth'
+import React, { useContext } from 'react'
 // import BrandCarousel from '../BrandCarousel/BrandCarousel'
 
 const RightSideNav = () => {
+  const {providerLogin} = useContext(AuthContext)
+  const googleProvider = new GoogleAuthProvider()
+  const handleGoogleSignIn = () =>{
+    providerLogin(googleProvider)
+    .then(result =>{
+      const user = result.user
+      console.log(user);
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
   return (
     <div className='pl-24 space-y-5'>
         <div className='grid gap-1 w-[40%]'>
-            <Button variant='outline'>Login with Google</Button>
+            <Button onClick={handleGoogleSignIn} variant='outline'>Login with Google</Button>
             <Button variant='outline'>Login with Github</Button>
         </div>
         <div className='grid gap-2 pr-8 '>

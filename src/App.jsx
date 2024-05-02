@@ -1,7 +1,7 @@
 import { RouterProvider } from 'react-router-dom'
 import './App.css'
-import { Button } from './components/ui/button'
-import Main from './layout/Main'
+// import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from 'react-hot-toast'
 import { routes } from './routes/Routes/Routes'
 
 function App() {
@@ -9,6 +9,8 @@ function App() {
   return (
     <>
       <RouterProvider router={routes}/>
+      {/* <Toaster/> */}
+      <Toaster/>
     </>
   )
 }
